@@ -1,0 +1,2 @@
+git-checkin usr/bin/
+git-checkin.bash_completion etc/bash_completion.d/

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+witty_usage() {
+	cat >&2 <<EOF
+To get work item completions and listings using $0, add the following lines to
+your .bashrc:
+
+export WITTY_COLLECTION=http://your-tfs-server:8080/tfs/YourCollection
+export WITTY_PROJECT=YourTFSProject
+export WITTY_QUERY="Query name to use"
+
+# and optionally:
+
+export WITTY_FORMAT="[%(id)s] %(title)s"
+EOF
+	exit 1
+}
+
+if [[ $1 ]]; then
+	exec git tf checkin --no-lock --no-metadata --shallow --associate "$@"
+else
+	if [[ -z $WITTY_COLLECTION ||
+		-z $WITTY_PROJECT ||
+		-z $WITTY_QUERY ]]; then
+		witty_usage
+	fi
+
+	if tput cols &> /dev/null; then
+		cols="-w $(tput cols)"
+	fi
+
+	exec witty --collection="$WITTY_COLLECTION" \
+		--project="$WITTY_PROJECT" \
+		--format="${WITTY_FORMAT:-[%(id)s] %(title)s}" \
+		"$WITTY_QUERY" | fribidi --ltr $cols
+fi
+

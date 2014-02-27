@@ -1,0 +1,2 @@
+witty: binary-without-manpage usr/bin/witty
+witty: binary-without-manpage usr/bin/git-checkin

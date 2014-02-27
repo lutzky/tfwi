@@ -1,0 +1,22 @@
+have git-checkin &&
+_git_checkin()
+{
+	if [[ -z $WITTY_COLLECTION ||
+		-z $WITTY_PROJECT ||
+		-z $WITTY_QUERY ]]; then
+		return 1
+	fi
+
+	wis="$(witty --collection="$WITTY_COLLECTION" \
+		--project="$WITTY_PROJECT" \
+		--format='%(id)s' \
+		"$WITTY_QUERY")"
+
+	cur=${COMP_WORDS[COMP_CWORD]}
+
+	COMPREPLY=( $(compgen -W "$wis" ${COMP_WORDS[COMP_CWORD]}) )
+
+	return 0
+}
+
+[ "${have:-}" ] && complete -F _git_checkin -o default git-checkin

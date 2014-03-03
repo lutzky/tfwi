@@ -1,18 +1,18 @@
-Source: witty
+Source: tfwi
 Section: python
 Priority: extra
 Maintainer: Ohad Lutzky <ohad@lutzky.net>
-Build-Depends: debhelper (>= 8)
+Build-Depends: debhelper (>= 8), python (>= 2.6)
 Standards-Version: 3.9.1
 X-Python-Version: >=2.6
 XS-Python-Version: current, >=2.6
 
-Package: witty
+Package: tfwi
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends}
 Recommends: git-tf
 Provides: ${python:Provides}
-Description: A TTY workitem tool for TFS
+Description: A Team Foundwation Work Item tool
  This utility provides an alternative for the 'wit' commandline program to
  perform queries on Microsoft Team Foundation Server work items.  Output is
  available either as JSON or as a customized-format line output.

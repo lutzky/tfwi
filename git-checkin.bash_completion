@@ -1,16 +1,16 @@
 have git-checkin &&
 _git_checkin()
 {
-	if [[ -z $WITTY_COLLECTION ||
-		-z $WITTY_PROJECT ||
-		-z $WITTY_QUERY ]]; then
+	if [[ -z $TFWI_COLLECTION ||
+		-z $TFWI_PROJECT ||
+		-z $TFWI_QUERY ]]; then
 		return 1
 	fi
 
-	wis="$(witty --collection="$WITTY_COLLECTION" \
-		--project="$WITTY_PROJECT" \
+	wis="$(tfwi --collection="$TFWI_COLLECTION" \
+		--project="$TFWI_PROJECT" \
 		--format='%(id)s' \
-		"$WITTY_QUERY")"
+		"$TFWI_QUERY")"
 
 	cur=${COMP_WORDS[COMP_CWORD]}
 

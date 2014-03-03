@@ -1,19 +1,20 @@
-import witty
+import tfwi
 
 from setuptools import setup
 
 
 setup(
-    name="witty",
-    version=witty.__version__,
-    description="A TTY workitem tool for TFS",
+    name="tfwi",
+    version=tfwi.__version__,
+    description="A Team Foundation Work Item tool",
     author="Ohad Lutzky",
     author_email="ohad@lutzky.net",
     license="GPL",
-    py_modules=["witty"],
+    py_modules=["tfwi"],
+    test_suite="tfwi",
     entry_points={
         'console_scripts': [
-            'witty = witty:main',
+            'tfwi = tfwi:main',
         ],
     },
 )

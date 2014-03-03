@@ -1,7 +1,9 @@
 #!/usr/bin/python
 # encoding: utf-8
 
-"""Witty - a TTY workitem tool for TFS
+"""tfwi - A Team Foundation Work Item tool
+
+(Pronounced "tphui")
 
 Use this utility for cleaner access to work items. Output is available either
 as JSON or as a customized-format line output.
